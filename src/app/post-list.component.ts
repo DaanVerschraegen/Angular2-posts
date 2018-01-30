@@ -11,6 +11,7 @@ import { PostService } from './post.service';
 
 export class PostListComponent  {
    posts: Post[];
+   comments: Comment[];
 
    @Output() commentsFound = new EventEmitter();
 
@@ -20,9 +21,14 @@ export class PostListComponent  {
    		this.postService.getAllPosts().subscribe(data => this.posts = data);
    }
 
-   getComments(index: number): void {}
+   getComments(index: number): void {
+   		this.postService.getCommentsForPost(index: number).subscribe(data => this.comments = data);
+   		printComments(comments);
+   }
 
    printComments(comments: Comment[]): void {
-   		this.postService.getCommentsForPost(index: number).subscribe(data => this.comments = data);
+		angular.forEach(comments, function(value, key) {
+			console.log(value.name);
+		});
    }
 }
