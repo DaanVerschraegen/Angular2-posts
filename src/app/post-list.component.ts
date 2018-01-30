@@ -1,4 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Comment } from './comment';
+import { Post } from './post';
+
+import { PostService } from './post.service';
 
 @Component({
    selector: 'post-list',
